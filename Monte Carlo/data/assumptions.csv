@@ -1,0 +1,165 @@
+name,value
+# ============================================================,
+# SIMULATION SETTINGS,
+# ============================================================,
+debt_mode,4M
+horizon_months,60
+n_sims,10000
+,
+# ============================================================,
+# ACCOUNTING BASIS,
+# ============================================================,
+accounting_basis,gaap
+gaap_start_month,Jan-26
+gaap_adjustment_is_cash,0
+gaap_revenue_includes_collections,0
+,
+# ============================================================,
+# FORECASTING (regression mode),
+# ============================================================,
+forecast_mode,regression
+expense_floor,344723
+expense_floor_hold_months,9
+forecast_half_life_months,12
+,
+# ============================================================,
+# REVENUE/EXPENSE VOLATILITY (static mode only),
+# ============================================================,
+revenue_sigma,0.08
+expenses_sigma,0.06
+expense_growth_annual,0.03
+business_growth_annual,0
+base_cash_revenue_monthly,319116
+base_cash_expenses_monthly,404683
+,
+# ============================================================,
+# NEW CLIENT REVENUE OVERLAY,
+# ============================================================,
+# Deterministic new client net revenue added to EBITDA.,
+# Loaded from new_client_revenue.csv (Mon-YY format).,
+# Beyond the CSV last month the last value is held flat.,
+# Set new_client_enabled=0 to disable entirely (baseline run).,
+new_client_enabled,1
+new_client_csv,new_client_revenue.csv
+# CV for multiplicative lognormal noise on new client rev (0=deterministic).,
+new_client_sigma,0.15
+# Scale factor: 1.0=full pipeline 0.5=half pipeline materializes.,
+new_client_realization_pct,1.0
+,
+# ============================================================,
+# CLOSE / SOURCES & USES,
+# ============================================================,
+purchase_price,1399285
+total_new_term_debt_proceeds,2961075
+loc_initial_draw,234795
+loc_limit,378165
+interest_reserve_initial,0
+use_paydown_direct,645572
+use_payoff_ap,216709
+use_absorb_loan_payoff,416453
+use_absorb_loc_payoff,392425
+starting_cash_adjustment,81621
+,
+# ============================================================,
+# PORTFOLIO COLLECTIONS,
+# ============================================================,
+base_total_collections,3555744
+collections_sigma,0.2
+portfolio_curve_horizon_months,60
+curve_jitter_concentration,200
+portfolio_current_months,12
+portfolio_current_haircut,1
+,
+# ============================================================,
+# STEP-UP GAINS (monthly),
+# ============================================================,
+gain_paydown_direct_monthly,0
+gain_payoff_ap_monthly,6591
+gain_absorb_loan_monthly,0
+gain_absorb_loc_monthly,0
+,
+# ============================================================,
+# TERM DEBT - LOAN 1 (Business Assets),
+# ============================================================,
+loan1_principal,821954
+loan1_apr,0.09
+loan1_amort_months,60
+loan1_amort_months_after_io,60
+,
+# ============================================================,
+# TERM DEBT - LOAN 2 (Personal/Investment Assets),
+# ============================================================,
+loan2_principal,2019017
+loan2_apr,0.065
+loan2_amort_months,84
+loan2_amort_months_after_io,84
+,
+# ============================================================,
+# TERM DEBT - COMMON,
+# ============================================================,
+term_io_months,6
+,
+# ============================================================,
+# REVOLVING LINE OF CREDIT,
+# ============================================================,
+loc_apr,0.09
+loc_auto_paydown,1
+loc_draw_to_prevent_cash_negative,1
+loc_min_cash_buffer,0
+rloc_rest_enabled,1
+rloc_rest_month_of_year,12
+rloc_rest_duration_months,1
+,
+# ============================================================,
+# COVENANT: COMPENSATING BALANCE,
+# ============================================================,
+comp_balance_pct,0.2
+comp_balance_cash_eligible,1
+comp_balance_include_personal,1
+avg_trust_balance,603422
+trust_haircut,1
+,
+# ============================================================,
+# COVENANT: CURRENT RATIO,
+# ============================================================,
+current_ratio_min,1.25
+other_current_assets,254437
+other_current_liabilities,674022
+current_ratio_include_restricted_cash,1
+restricted_cash_balance,569714
+current_ratio_include_rloc_in_cl,1
+,
+# ============================================================,
+# COVENANT: BORROWER DSCR,
+# ============================================================,
+dscr_min,1.3
+cash_taxes_annual,0
+dividends_annual,0
+distributions_annual,0
+,
+# ============================================================,
+# COVENANT: GLOBAL DSCR (annual),
+# ============================================================,
+gdscr_min,2
+personal_cash_flow_annual,0
+personal_debt_service_annual,0
+extra_personal_ds_annual,0
+,
+# ============================================================,
+# COVENANT: DEBT TO EBITDA,
+# ============================================================,
+debt_to_ebitda_max_first12,2.25
+debt_to_ebitda_max_after12,1.75
+,
+# ============================================================,
+# OTHER DEBT (External - outside new lender),
+# ============================================================,
+ext_debt_annual_ds,98586
+other_cash_disbursements_monthly,15302 # Ext DS + Net non-op
+# --- Cash Basis Split (v12.1) ---,
+# When enabled: covenant EBITDA uses GAAP basis while cash waterfall uses CF cash basis,
+cash_basis_split,1
+cash_basis_csv,cash_basis_baseline.csv
+# cash_basis_rev_sigma and cash_basis_exp_sigma default to revenue_sigma/expenses_sigma if 0,
+cash_basis_rev_sigma,0
+cash_basis_exp_sigma,0
