@@ -87,4 +87,4 @@ All Rights Reserved. See [LICENSE](LICENSE) for details. Shared for portfolio ev
 
 ---
 
-*Landon Webster — Controller / Finance & Analytics*
+*Landon Webster — VP of Finance / Controller*
